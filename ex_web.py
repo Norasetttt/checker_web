@@ -3,10 +3,12 @@ import os
 import pandas as pd
 
 
-
-# Read the CSV file into a DataFrame
 df = pd.read_csv("all_file.csv")
 
+
+def df_to_table() :
+    
+    return
 
 st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygULcmljayBhc3RsZXk%3Dl")
 st.title("My Streamlit App")
