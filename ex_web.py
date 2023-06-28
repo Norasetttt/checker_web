@@ -3,7 +3,7 @@ import pandas as pd
 
 
 df = pd.read_csv("all_file.csv")
-new_df = df.set_index('start_time','end_time')
+new_df = df.set_index(['start_time','end_time'])
 
 def df_to_table() :
     
