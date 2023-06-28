@@ -5,7 +5,7 @@ import pandas as pd
 
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv(r'C:\Users\47gia\Downloads\create_web\all_file.csv')
+df = pd.read_csv("all_file.csv")
 scrollable_content  = '<div style="height: 10px; overflow: scroll;">'+df['answer'][0]+ '</div>' 
 df.at[0, 'answer'] = scrollable_content
 
