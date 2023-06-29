@@ -5,15 +5,22 @@ import pandas as pd
 df = pd.read_csv("all_file.csv")
 new_df = df.set_index('start_time')
 
-def df_to_table() :
-    
-    return
+yid_list = [df["File Name"][0]]
+for i in range(1, len(df["File Name"])):
+    if df["File Name"][i - 1] != df["File Name"][i]:
+        yid_list.append(df["File Name"][i])
 
-st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygULcmljayBhc3RsZXk%3Dl")
+def convert_time_to_seconds(time):
+    h, m, s = map(int, time.split(':'))
+    return h * 3600 + m * 60 + s
+
+def get_row(df,row):
+    return df.iloc[row,0:1]
+
+
 st.title("Please recheck for me")
-st.write("URL = https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygULcmljayBhc3RsZXk%3Dl")
-st.experimental_data_editor(df)
-st.experimental_data_editor(new_df)
-if st.button("submit"):
-    st.write('submitted')
+st.write("URL = https://www.youtube.com/"+yid_list[0])
+if st.button("Jump to start"):
+    st.video("https://www.youtube.com/"+yid_list[0], start_time = convert_time_to_seconds(df["start_time"][0]))
+st.experimental_data_editor(get_row(df,0))
 
