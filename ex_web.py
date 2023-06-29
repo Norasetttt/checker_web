@@ -20,9 +20,8 @@ def get_row(df,row):
 
 st.title("Please recheck for me")
 st.write("URL = https://www.youtube.com/"+yid_list[0])
-if st.button("Jump to start"):
+if st.button("Jump to start",help=("Double click the df to edit")):
     st.video("https://www.youtube.com/"+yid_list[0], start_time = convert_time_to_seconds(df["start_time"][1]))
-st.help("Double click the df to edit")
 st.experimental_data_editor(get_row(df,0))
 
 
