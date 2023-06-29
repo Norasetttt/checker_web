@@ -25,7 +25,9 @@ if st.button("Jump to start"):
 st.experimental_data_editor(get_row(df,0))
 
 st.title("Please recheck for me")
-st.write("URL = https://www.youtube.com/"+yid_list[1])
+st.write("URL = https://www.youtube.com/"+yid_list[2])
 if st.button("Jump to start"):
-    st.video("https://www.youtube.com/"+yid_list[1], start_time = convert_time_to_seconds(df["start_time"][1]))
-st.experimental_data_editor(get_row(df,1))
+    st.video("https://www.youtube.com/"+yid_list[2], start_time = convert_time_to_seconds(df["start_time"][2]))
+st.experimental_data_editor(get_row(df,2))
+
+
