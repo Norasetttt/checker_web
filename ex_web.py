@@ -15,7 +15,7 @@ def convert_time_to_seconds(time):
     return h * 3600 + m * 60 + s
 
 def get_row(df,row):
-    return df.iloc[row,0:1]
+    return df.iloc[row,0:2]
 
 
 st.title("Please recheck for me")
