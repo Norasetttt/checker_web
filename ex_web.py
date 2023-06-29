@@ -8,7 +8,7 @@ new_df = df.set_index('start_time')
 yid_list = [df["File Name"][0]]
 for i in range(1, len(df["File Name"])):
     if df["File Name"][i - 1] != df["File Name"][i]:
-        yid_list.append(df["File Name"][i])
+        yid_list.append(df["File Name"][i].strip())
 
 def convert_time_to_seconds(time):
     h, m, s = map(int, time.split(':'))
