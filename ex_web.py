@@ -29,7 +29,7 @@ st.experimental_data_editor(get_row(df,0))
 i=3
 st.title("Please recheck for me")
 st.write("URL = https://www.youtube.com/watch?v="+yid_list[i])
-if st.button("Jump to start",help="??"):
+if st.button("Jump to start"):
     st.video("https://www.youtube.com/"+yid_list[i], start_time = convert_time_to_seconds(df["start_time"][i]))
 st.experimental_data_editor(get_row(df,i))
 
