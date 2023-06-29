@@ -26,7 +26,7 @@ st.experimental_data_editor(get_row(df,0))
 
 
 
-i=6
+i=3
 st.title("Please recheck for me")
 st.write("URL = https://www.youtube.com/"+yid_list[i])
 if st.button("Jump to start"):
