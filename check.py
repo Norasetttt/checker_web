@@ -1,6 +1,13 @@
+###This is a tester before main file (ex_web.py)
+###This is a tester before main file (ex_web.py)
+###This is a tester before main file (ex_web.py)
+
+
+
 import streamlit as st
 import pandas as pd
 import random
+import deta
 
 df = pd.read_csv(r"C:\Users\47gia\Downloads\create_web\all_file.csv")
 
@@ -42,6 +49,7 @@ def create_pages(yid_list):
                     if st.button("Jump to start",key = random_key ):
                         video = st.video("https://www.youtube.com/watch?v=" + yid_value, start_time=convert_time_to_seconds(df["start_time"][i]))
                     st.data_editor(get_row(df, i))
+
                     keys.remove(random_key)
             return page
 

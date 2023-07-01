@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import random
+import deta
 
 df = pd.read_csv("all_file.csv")
 
@@ -10,13 +11,16 @@ for i in range(1, len(df["File Name"])):
     if df["File Name"][i - 1] != df["File Name"][i]:
         yid_list.append(df["File Name"][i])
 
+#create time converter to use with video timestamp function 
 def convert_time_to_seconds(time):
     h, m, s = map(int, time.split(':'))
     return h * 3600 + m * 60 + s
 
+#collect only interested row with question and answer columns
 def get_row(df,row):
     return df.iloc[row,0:2]
 
+#get a random number for a key to add in button function 
 def get_unique_keys(number) :
     keys = []
     for i in range(number) :
@@ -25,6 +29,7 @@ def get_unique_keys(number) :
             keys.append(random_number)
     return keys 
 
+# create a mutiple pages with list of youtube-id /// return a dictionary with youtube-id as a key and function that contain detail of each youtube-id as a value 
 def create_pages(yid_list):
     pages = {}
     yid_pages = [yid + '_page' for yid in yid_list]
@@ -51,7 +56,7 @@ def create_pages(yid_list):
     return pages
 
 
-
+#start  \to build a web with csv dataframe
 def main():
     pages = create_pages(yid_list)
     st.sidebar.title("Navigation")
