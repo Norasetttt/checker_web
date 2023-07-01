@@ -19,11 +19,6 @@ def get_row(df,row):
 
 
 
-
-
-
-
-
 st.title("Please recheck for me")
 st.write("URL = https://www.youtube.com/watch?v="+yid_list[0])
 if st.button("Jump to start",help = '??'): #add help() and function below worked somehow
@@ -31,12 +26,7 @@ if st.button("Jump to start",help = '??'): #add help() and function below worked
 st.experimental_data_editor(get_row(df,0))
 
 
+st.sidebar("select page")
 
-i=3
-st.title("Please recheck for me")
-st.write("URL = https://www.youtube.com/watch?v="+yid_list[i])
-if st.button("Jump to start"):
-    st.video("https://www.youtube.com/"+yid_list[i], start_time = convert_time_to_seconds(df["start_time"][i]))
-st.experimental_data_editor(get_row(df,i))
 
 
