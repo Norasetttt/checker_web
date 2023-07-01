@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-df = pd.read_csv(r"C:\Users\47gia\Downloads\create_web\multipage\all_file.csv")
+df = pd.read_csv(r"C:\Users\47gia\Downloads\create_web\all_file.csv")
 
 #create list of youtube id               
 yid_list = [df["File Name"][0]]
@@ -11,9 +11,45 @@ for i in range(1, len(df["File Name"])):
         yid_list.append(df["File Name"][i])
 
 
-for file in os.listdir(r"C:\Users\47gia\Downloads\create_web") :
-    if file[0:9] == "multipage" and file[-3:] == ".py"  :
-        os.remove(r"C:\Users\47gia\Downloads\create_web\\"+file)
-print('finish')       
+
+
+def convert_time_to_seconds(time):
+    h, m, s = map(int, time.split(':'))
+    return h * 3600 + m * 60 + s
+
+def get_row(df,row):
+    return df.iloc[row,0:2]
+
+
+def create_pages(yid_list) :
+    pages = {}
+    yid_pages = [yid+'_page' for yid in yid_list]
+    for yid in yid_list :
+        for page in yid_pages:        
+            def page () :
+                indices = []
+                for id in list(df["File Name"]) :
+                    if id == yid :
+                        indices.append(list(df["File Name"]).index(id))
+                for i in range(min(indices),max(indices)+1) :
+                    st.title("start time "+str(df["start_time"][i]))
+                    if st.button("Jump to start"):
+                        video = st.video("https://www.youtube.com/watch?v="+yid , start_time = convert_time_to_seconds(df["start_time"][i]))  
+                    st.data_editor(get_row(df,i)) 
+            pages[yid] = page
+    return pages 
+
+
+
+pages = create_pages(yid_list)
+
+def main():
+    st.sidebar.title("Navigation")
+    selection = st.sidebar.radio("Go to", list(pages.keys()))
+    page = pages[selection]
+    page()
+
+if __name__ == "__main__":
+    main()      
 
 

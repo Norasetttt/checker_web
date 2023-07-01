@@ -17,25 +17,28 @@ def convert_time_to_seconds(time):
 def get_row(df,row):
     return df.iloc[row,0:2]
 
-st.title("Please recheck for me")
-st.write("URL = https://www.youtube.com/watch?v="+yid_list[0])
-if st.button("Jump to start",help = '??'): #add help() and function below worked somehow
-    st.video("https://www.youtube.com/"+yid_list[0], start_time = convert_time_to_seconds(df["start_time"][1]))
-st.experimental_data_editor(get_row(df,0))
+
+def create_pages(yid_list) :
+    pages = {}
+    yid_pages = [yid+'_page' for yid in yid_list]
+    for yid in yid_list :
+        for page in yid_pages:        
+            def page () :
+                indices = []
+                for id in list(df["File Name"]) :
+                    if id == yid :
+                        indices.append(list(df["File Name"]).index(id))
+                for i in range(min(indices),max(indices)+1) :
+                    st.title("start time "+str(df["start_time"][i]))
+                    if st.button("Jump to start"):
+                        video = st.video("https://www.youtube.com/watch?v="+yid , start_time = convert_time_to_seconds(df["start_time"][i]))  
+                    st.data_editor(get_row(df,i)) 
+            pages[yid] = page
+    return pages 
 
 
-def page1():
-    st.title("Page 1")
-    st.write("Welcome to Page 1!")
 
-def page2():
-    st.title("Page 2")
-    st.write("Welcome to Page 2!")
-
-pages = {
-    "Page 1": page1,
-    "Page 2": page2
-}
+pages = create_pages(yid_list)
 
 def main():
     st.sidebar.title("Navigation")
@@ -44,7 +47,7 @@ def main():
     page()
 
 if __name__ == "__main__":
-    main()
+    main()      
 
 
 
