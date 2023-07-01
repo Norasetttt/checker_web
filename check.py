@@ -52,7 +52,7 @@ def create_pages(yid_list):
 
 
 def main():
-    
+    pages = create_pages(yid_list)
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
     page = pages[selection]
