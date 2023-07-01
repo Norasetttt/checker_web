@@ -3,8 +3,6 @@ import pandas as pd
 
 
 df = pd.read_csv("all_file.csv")
-new_df = df.set_index('start_time')
-
 
 #create list of youtube id               
 yid_list = [df["File Name"][0]]
