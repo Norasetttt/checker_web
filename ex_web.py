@@ -33,14 +33,15 @@ def create_pages(yid_list):
         def create_page(yid_value):
             def page():
                 indices = []
+                st.video("https://www.youtube.com/watch?v=" + yid_value)
+                
                 for i, id in enumerate(list(df["File Name"])):
                     if id == yid_value:
                         indices.append(i)
+                
                 for i in range(min(indices), max(indices) + 1):
                     random_key = random.choice(keys)
                     st.title("start time " + str(df["start_time"][i]))
-                    if st.button("Jump to start",key = random_key ):
-                        video = st.video("https://www.youtube.com/watch?v=" + yid_value, start_time=convert_time_to_seconds(df["start_time"][i]))
                     st.data_editor(get_row(df, i))
                     keys.remove(random_key)
             return page
