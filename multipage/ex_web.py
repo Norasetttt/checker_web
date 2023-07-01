@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 
-df = pd.read_csv("all_file.csv")
+df = pd.read_csv("multipage/all_file.csv")
 new_df = df.set_index('start_time')
 
 yid_list = [df["File Name"][0]]
@@ -16,8 +16,6 @@ def convert_time_to_seconds(time):
 
 def get_row(df,row):
     return df.iloc[row,0:2]
-
-
 
 st.title("Please recheck for me")
 st.write("URL = https://www.youtube.com/watch?v="+yid_list[0])
