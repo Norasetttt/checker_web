@@ -18,9 +18,15 @@ def get_row(df,row):
     return df.iloc[row,0:2]
 
 
+
+
+
+
+
+
 st.title("Please recheck for me")
 st.write("URL = https://www.youtube.com/watch?v="+yid_list[0])
-if st.button("Jump to start",help = '??'):
+if st.button("Jump to start",help = '??'): #add help() and function below worked somehow
     st.video("https://www.youtube.com/"+yid_list[0], start_time = convert_time_to_seconds(df["start_time"][1]))
 st.experimental_data_editor(get_row(df,0))
 
