@@ -22,7 +22,7 @@ def page1() :
     
 
 
-page = st.sidebar.radio("page1")
+page = st.sidebar.radio("Go to","page1")
 page()
 
 
