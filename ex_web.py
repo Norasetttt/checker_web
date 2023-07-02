@@ -66,3 +66,8 @@ def main():
 
 if __name__ == "__main__":
     main()      
+
+
+st.text_area("something",placeholder='???')
+
+st.text_input("question",value='???')
