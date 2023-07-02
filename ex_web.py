@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import random
-import deta
+
 
 df = pd.read_csv("all_file.csv")
 
