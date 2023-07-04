@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import random
-from streamlit_player import st_player
 
 df = pd.read_csv("all_file.csv")
 
