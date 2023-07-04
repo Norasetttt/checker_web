@@ -51,7 +51,7 @@ def create_pages(yid_list):
                     st.title(str(df["start_time"][i]) + '  to  ' + str(df["end_time"][i]))
                     st.text_input("question",value = str(df["question"][i]))
                     st.text_input("answer",value = str(df["answer"][i]))
-                    back,submit,next = st.columns(3,gap = "large")
+                    back,submit,next = st.columns(3)
                     with back :
                         if st.button("Back"):
                             st.text('')
