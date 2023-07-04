@@ -50,7 +50,7 @@ def create_pages(yid_list):
                 indices.append(i)
         pages[page_key] = []
         for i in range(min(indices),max(indices)+1) :
-            pages[page_key].append(create_page(i))
+            pages[page_key].append(create_page(i)())
 
     return pages
 
