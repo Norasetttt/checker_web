@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import random
-
+from streamlit_player import st_player
 
 df = pd.read_csv("all_file.csv")
 
@@ -40,10 +40,8 @@ def create_pages(yid_list):
         #create one page
         def create_page(yid):
             def page():
-                indices = []
-                st.video("https://www.youtube.com/watch?v=" + yid)
-                
-                #get row and column of youtube_id's q&a from dataframe 
+                #get row and column of youtube_id's q&a from dataframe
+                indices = [] 
                 for i, id in enumerate(list(df["File Name"])):
                     if id == yid:
                         indices.append(i)
@@ -54,6 +52,19 @@ def create_pages(yid_list):
                     st.title(str(df["start_time"][i]) + '  to  ' + str(df["end_time"][i]))
                     st.text_input("question",value = str(df["question"][i]))
                     st.text_input("answer",value = str(df["answer"][i]))
+                    back,submit,next = st.columns(3)
+                    with back :
+                        if st.button("Back"):
+                            st.text('')
+                    with submit :
+                        if st.button("Submit"):
+                            st.text('')
+                    with next :
+                        if st.button("Next") :
+                            st.text('')
+                            
+
+
                     keys.remove(random_key)
             return page
 
