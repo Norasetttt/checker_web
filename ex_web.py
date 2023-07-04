@@ -41,7 +41,7 @@ def create_pages(yid_list):
                 st.title(str(df["start_time"][i]) + '  to  ' + str(df["end_time"][i]))
                 st.text_input("question",value = str(df["question"][i]))
                 st.text_input("answer",value = str(df["answer"][i]))
-                return page
+            return page()
             
             #get row and column of youtube_id's q&a from dataframe
         indices = [] 
@@ -50,7 +50,7 @@ def create_pages(yid_list):
                 indices.append(i)
         pages[page_key] = []
         for i in range(min(indices),max(indices)+1) :
-            pages[page_key].append(create_page(i)())
+            pages[page_key].append(create_page(i))
 
     return pages
 

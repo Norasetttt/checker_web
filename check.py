@@ -21,7 +21,7 @@ def create_pages(yid_list):
                 st.title(str(df["start_time"][i]) + '  to  ' + str(df["end_time"][i]))
                 st.text_input("question",value = str(df["question"][i]))
                 st.text_input("answer",value = str(df["answer"][i]))
-                return page
+            return page()
             
             #get row and column of youtube_id's q&a from dataframe
         indices = [] 
