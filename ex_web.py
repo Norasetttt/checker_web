@@ -64,7 +64,7 @@ def main():
     back, submit, next = st.columns(3)
 
     def next_button():
-        nonlocal i  
+          
         with next:
             if st.button("Next"):
                 i += 1
@@ -75,7 +75,7 @@ def main():
                 st.title("Submitted")
 
     def back_button():
-        nonlocal i  
+          
         with back:
             if st.button("Back"):
                 i -= 1
