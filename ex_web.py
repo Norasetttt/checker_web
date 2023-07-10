@@ -57,38 +57,43 @@ def create_pages(yid_list):
 
 #start to build a web with csv dataframe
 def main():
-    global i
     pages = create_pages(yid_list)
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
     i = 0
     page = pages[selection][i]
-    page()
-    
-    back,submit,next=st.columns(3)
+    page(i)  # Pass the value of i as a parameter
+
+    back, submit, next = st.columns(3)
+
     def next_button():
+        nonlocal i  # Declare i as nonlocal to modify the outer i variable
         with next:
             if st.button("Next"):
                 i += 1
+
     def submit_button():
-        with submit :
-            if st.button("Submit") :
+        with submit:
+            if st.button("Submit"):
                 st.title("Submitted")
+
     def back_button():
+        nonlocal i  # Declare i as nonlocal to modify the outer i variable
         with back:
             if st.button("Back"):
                 i -= 1
-    if i == 0 :
+
+    if i == 0:
         submit_button()
         next_button()
     elif i == pages[selection][-1].index():
         back_button()
         submit_button()
-    else :
+    else:
         back_button()
         submit_button()
         next_button()
-
+        
 if __name__ == "__main__":
     main()      
 
