@@ -60,11 +60,11 @@ def main():
     pages = create_pages(yid_list)
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
-    i = 0
+    global i
+    i = 0 
     back, submit, next = st.columns(3)
 
     def next_button():
-          
         with next:
             if st.button("Next"):
                 i += 1
@@ -75,7 +75,6 @@ def main():
                 st.title("Submitted")
 
     def back_button():
-          
         with back:
             if st.button("Back"):
                 i -= 1
