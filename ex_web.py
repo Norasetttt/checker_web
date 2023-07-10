@@ -61,13 +61,10 @@ def main():
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
     i = 0
-    page = pages[selection][i]
-    page()  # Pass the value of i as a parameter
-
     back, submit, next = st.columns(3)
 
     def next_button():
-        nonlocal i  # Declare i as nonlocal to modify the outer i variable
+        nonlocal i  
         with next:
             if st.button("Next"):
                 i += 1
@@ -78,7 +75,7 @@ def main():
                 st.title("Submitted")
 
     def back_button():
-        nonlocal i  # Declare i as nonlocal to modify the outer i variable
+        nonlocal i  
         with back:
             if st.button("Back"):
                 i -= 1
@@ -94,6 +91,10 @@ def main():
         submit_button()
         next_button()
 
+    page = pages[selection][i]
+    page()  
+
+    
 if __name__ == "__main__":
     main()      
 
