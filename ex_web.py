@@ -57,6 +57,7 @@ def create_pages(yid_list):
 
 #start to build a web with csv dataframe
 def main():
+    global i
     pages = create_pages(yid_list)
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
