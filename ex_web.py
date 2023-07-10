@@ -55,29 +55,34 @@ def create_pages(yid_list):
             pages[page_key].append(create_page(i))
     return pages
 
-#start to build a web with csv dataframe
 def main():
     pages = create_pages(yid_list)
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
-    i = 0 
-    while i < len(pages[selection]) :
-        page = pages[selection][i]
-        page()
-        back, submit, next = st.columns(3)
-        page = pages[selection][i]
-        
-        if i > 0 :
-            if back.button("Back"):
-                i -= 1
-        
-        if submit.button("Submit"):
-            st.title("Submitted")
-        
-        if i < pages[selection].index(pages[selection][-1]):
-            if next.button("Next"):
-                i += 1
-            
+    i = st.session_state.get('current_page_index', 0)  # Retrieve the current page index from session state
+    if i >= len(pages[selection]):
+        i = 0  # Reset the current page index if it exceeds the available pages
+
+    page = pages[selection][i]
+    page()
+
+    back, submit, nxt = st.columns(3)
+
+    if i > 0:
+        if back.button("Back"):
+            i -= 1
+
+    if submit.button("Submit"):
+        st.title("Submitted")
+
+    if i < len(pages[selection]) - 1:
+        if nxt.button("Next"):
+            i += 1
+
+    # Update the current page index in session state
+    st.session_state['current_page_index'] = i
+
+    
 if __name__ == "__main__":
     main()      
 
