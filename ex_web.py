@@ -74,7 +74,7 @@ def main():
         if submit.button("Submit"):
             st.title("Submitted")
         
-        if i < pages[selection][-1]:
+        if i < pages[selection][-1].index():
             if next.button("Next"):
                 i += 1
             
