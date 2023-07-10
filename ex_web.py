@@ -62,7 +62,7 @@ def main():
     selection = st.sidebar.radio("Go to", list(pages.keys()))
     i = 0
     page = pages[selection][i]
-    page(i)  # Pass the value of i as a parameter
+    page()  # Pass the value of i as a parameter
 
     back, submit, next = st.columns(3)
 
@@ -93,7 +93,7 @@ def main():
         back_button()
         submit_button()
         next_button()
-        
+
 if __name__ == "__main__":
     main()      
 
