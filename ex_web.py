@@ -61,8 +61,7 @@ def main():
     selection = st.sidebar.radio("Go to", list(pages.keys()))
     st.video("https://www.youtube.com/watch?v="+selection)
     i = st.session_state.get('current_page_index', 0)  # Retrieve the current page index from session state
-    if i >= len(pages[selection]):
-        i = 0  
+    
 
     page = pages[selection][i]
     page()
@@ -81,6 +80,8 @@ def main():
         i += 1
         # Update the current page index in session state
         st.session_state['current_page_index'] = i
+
+
 if __name__ == "__main__":
     main()      
 
