@@ -69,18 +69,15 @@ def main():
 
     back, submit, nxt = st.columns(3)
 
-    if i > 0 and back.button("Back"):
-        i -= 1
-        # Update the current page index in session state
-        st.session_state[selection + '_current_page_index'] = i
-
+    if i > 0:
+        if back.button("Back"):
+            i -= 1
     if submit.button("Submit"):
         st.title("Submitted")
-
-    if i < len(pages[selection]) - 1 and nxt.button("Next"):
-        i += 1
-        # Update the current page index in session state
-        st.session_state[selection + '_current_page_index'] = i
+    if i < len(pages[selection]) - 1:
+        if nxt.button("Next"):
+            i += 1
+    st.session_state[selection + '_current_page_index'] = i
 
 if __name__ == "__main__":
     main()      
