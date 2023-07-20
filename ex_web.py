@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import random
+import sqlite3
 
 df = pd.read_csv("all_file.csv")
 
@@ -34,9 +35,8 @@ def create_page(i):
         st.title(str(df["start_time"][i]) + '  to  ' + str(df["end_time"][i]))
         st.text_input("question", value=str(df["question"][i]))
         st.text_input("answer", value=str(df["answer"][i]))
+        st.text_area("Answer",value=str(df["answer"][i]))
     return page
-
-
 
 # create a multiple pages with list of youtube-id /// return a dictionary with youtube-id as a key and function that contain details of each youtube-id as a value 
 def create_pages(yid_list):
@@ -60,7 +60,7 @@ def main():
     st.sidebar.title("Navigation")
     selection = st.sidebar.radio("Go to", list(pages.keys()))
     st.video("https://www.youtube.com/watch?v="+selection)
-    i = st.session_state.get('current_page_index', 0)  # Retrieve the current page index from session state
+    i = st.session_state.get('current_page_index', 0)  
     if i >= len(pages[selection]):
         i = 0  
 
@@ -71,7 +71,6 @@ def main():
 
     if i > 0 and back.button("Back"):
         i -= 1
-        # Update the current page index in session state
         st.session_state['current_page_index'] = i
 
     if submit.button("Submit"):
@@ -79,11 +78,7 @@ def main():
 
     if i < len(pages[selection]) - 1 and nxt.button("Next"):
         i += 1
-        # Update the current page index in session state
         st.session_state['current_page_index'] = i
-
 
 if __name__ == "__main__":
     main()      
-
-
